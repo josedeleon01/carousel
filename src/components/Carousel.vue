@@ -2,7 +2,9 @@
   <div class='carousel-view'>
     <h2>Ejemplo Slider</h2>
       <div v-for="item in slides" :key="item.id">
-        <img :src="item.path" v-show="item.id == currentImage.id">
+        <transition-group name="fade">
+          <img :src="item.path" :key="item.id"  v-show="item.id == currentImage.id" class="img">
+        </transition-group>
       </div>
       <div>
         <button @click="previous">prev</button>
@@ -13,16 +15,17 @@
 
 <script>
 export default {
-  name: 'carousel',
+  name: 'Carousel',
 
   data() {
     return {
-      currentNumber: 0,
-      slides: [
-        { path: 'https://www.import.io/wp-content/uploads/2017/10/React-logo.png', id: 1},
-        { path: 'https://upload.wikimedia.org/wikipedia/commons/5/53/Vue.js_Logo.svg', id: 2},
-        { path: 'https://angular.io/assets/images/logos/angularjs/AngularJS-Shield.svg', id: 3},
-      ]
+      currentNumber: 0
+    }
+  },
+
+  props: {
+    slides: {
+      type: Array
     }
   },
 
@@ -48,5 +51,10 @@ export default {
 </script>
 
 <style>
-
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+    opacity: 0
+  }
 </style>
