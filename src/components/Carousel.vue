@@ -25,7 +25,8 @@ export default {
 
   props: {
     slides: {
-      type: Array
+      type: Array,
+      required: true
     }
   },
 
