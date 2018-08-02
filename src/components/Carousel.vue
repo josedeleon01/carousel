@@ -1,10 +1,12 @@
 <template>
   <div class='carousel-view'>
-      <div v-for="item in slides" :key="item.id">
-        <transition-group name="fade">
-          <img :src="item.path" :key="item.id"  v-show="item.id == currentImage.id" class="img">
-        </transition-group>
+    <div class="imgWrraper">
+      <div v-for="item in slides" :key="item.id" class="imgParent">
+        <transition name="fade">
+          <img :src="item.path" :key="item.id"  v-show="item.id == currentImage.id">
+        </transition>
       </div>
+    </div>
       <div class="controls">
         <button @click="previous">prev</button>
         <button @click="next">next</button>
@@ -58,11 +60,19 @@ export default {
     opacity: 0
   }
   img {
-  position: absolute;
   top: 25px;
   left: 25px;
 }
+.imgWrraper{
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
 .controls{
-  margin-top: 430px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.imgParent{
+  position: absolute;
 }
 </style>
