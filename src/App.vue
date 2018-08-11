@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <Carousel :slides="slides"/>
+    <Carousel :slides="slides" />
+    <Carousel :slides="slides" />
   </div>
 </template>
 

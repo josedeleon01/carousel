@@ -1,16 +1,17 @@
 <template>
   <div class='carousel-view'>
     <div class="imgWrraper">
-      <div v-for="item in slides" :key="item.id" class="imgParent">
+      <div v-for="item in slides" :key="item.id" class="contentParent">
         <transition name="fade">
           <img :src="item.path" :key="item.id"  v-show="item.id == currentImage.id">
         </transition>
       </div>
+      <slot></slot>
     </div>
-      <div class="controls">
-        <button @click="previous">prev</button>
-        <button @click="next">next</button>
-      </div>
+    <div class="controls">
+      <button @click="previous">prev</button>
+      <button @click="next">next</button>
+    </div>
   </div>
 </template>
 
@@ -25,7 +26,7 @@ export default {
   },
 
   props: {
-    slides: {
+    slides:{
       type: Array,
       required: true
     }
@@ -68,11 +69,31 @@ export default {
   width: 400px;
   height: 400px;
 }
+.contentParent{
+  position: absolute;
+  border: 10px;
+}
 .controls{
   margin-top: 15px;
   margin-bottom: 15px;
 }
-.imgParent{
-  position: absolute;
+.next
+{
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 20px;
+    height: 20px;
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+    cursor: pointer;
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
 }
 </style>
