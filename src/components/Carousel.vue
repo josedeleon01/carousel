@@ -84,6 +84,7 @@ img {
   -moz-border-radius: 30px;
   border-radius: 30px;
   align-content: center;
+  margin-left: 130px;
 }
 .controls span {
   color: #ffffff;
